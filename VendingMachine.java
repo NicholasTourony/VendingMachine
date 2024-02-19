@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class VendingMachine {
-    public static void main(String[] argx){
+    public static void main(String[] args){
         System.out.println("Welcome to the Vending Machine ");
         Scanner scan = new Scanner(System.in);
         boolean pickingNumber = true;
