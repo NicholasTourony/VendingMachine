@@ -3,12 +3,24 @@ import java.util.Scanner;
 public class VendingMachine {
     public static void main(String[] argx){
         System.out.println("Welcome to the Vending Machine ");
-        System.out.println("What would you like to order enter 1 for a chocolate bar ($1.50), 2 for a soda ($1.00), or 3 for chips ($0.75):");
-        int num;
-   
         Scanner scan = new Scanner(System.in);
-        num = scan.nextInt();
-        scan.nextLine();
+        boolean pickingNumber = true;
+        int num = 0;
+        while(pickingNumber)
+        {
+            System.out.println("What would you like to order enter 1 for a chocolate bar ($1.50), 2 for a soda ($1.00), or 3 for chips ($0.75):");
+            
+            num = scan.nextInt();
+            scan.nextLine();
+            if(num == 1 || num == 2 || num == 3 ){
+                pickingNumber = false;
+            }
+            else{
+                System.out.println("You have entered an incorrect number");
+            }
+        
+        }
+        
 
         boolean enteringMoney = true;
         double balance = 0;
@@ -59,11 +71,22 @@ public class VendingMachine {
                 System.out.println("That vending machine item does not exist");
                 break;
         }
-        balance = balance - cost;
-        if (enoughBalance)
-        {
-            System.out.println("Thank you for your purchace, enjoy your " + item + ", your change is: " + (balance));
+            System.out.println("Are you sure you want to purchase " + item + " (yes or no)" );
+        
+        String purchaseConfirmation = scan.nextLine();
+        if (purchaseConfirmation.toLowerCase().equals("yes")){
+            balance = balance - cost;
+            if (enoughBalance)
+            {
+                System.out.println("Thank you for your purchace, enjoy your " + item + ", your change is: " + (balance));
+            }
+            else{
+                System.out.println("Not enough money, please enter more.");
+            }
         }
-
+        else{
+            System.out.println("Heres your money back $" + balance);
+        }
+            
     }
 }
